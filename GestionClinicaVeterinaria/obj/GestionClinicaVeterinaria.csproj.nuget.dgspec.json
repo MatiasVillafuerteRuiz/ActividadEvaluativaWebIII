@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Estudiante\\source\\repos\\GestionClinicaVeterinaria\\GestionClinicaVeterinaria\\GestionClinicaVeterinaria.csproj": {}
+    "D:\\ActividadEvaluativaI\\GestionClinicaVeterinaria\\GestionClinicaVeterinaria.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Estudiante\\source\\repos\\GestionClinicaVeterinaria\\GestionClinicaVeterinaria\\GestionClinicaVeterinaria.csproj": {
+    "D:\\ActividadEvaluativaI\\GestionClinicaVeterinaria\\GestionClinicaVeterinaria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Estudiante\\source\\repos\\GestionClinicaVeterinaria\\GestionClinicaVeterinaria\\GestionClinicaVeterinaria.csproj",
+        "projectUniqueName": "D:\\ActividadEvaluativaI\\GestionClinicaVeterinaria\\GestionClinicaVeterinaria.csproj",
         "projectName": "GestionClinicaVeterinaria",
-        "projectPath": "C:\\Users\\Estudiante\\source\\repos\\GestionClinicaVeterinaria\\GestionClinicaVeterinaria\\GestionClinicaVeterinaria.csproj",
+        "projectPath": "D:\\ActividadEvaluativaI\\GestionClinicaVeterinaria\\GestionClinicaVeterinaria.csproj",
         "packagesPath": "C:\\Users\\Estudiante\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Estudiante\\source\\repos\\GestionClinicaVeterinaria\\GestionClinicaVeterinaria\\obj\\",
+        "outputPath": "D:\\ActividadEvaluativaI\\GestionClinicaVeterinaria\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -58,24 +58,30 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[10.0.10, )"
+              "version": "[10.0.12, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[10.0.10, )"
+              "version": "[10.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.10, )"
+              "version": "[10.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[10.0.10, )"
+              "version": "[10.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.10, )"
+              "version": "[10.0.12, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2026.9.0, )"
             }
           },
           "imports": [

@@ -20,13 +20,128 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+
+
+                            <!-- INICIO -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link text-dark"
+                                   asp-controller="Home"
+                                   asp-action="Index">
+
+                                    Inicio
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- ============================================== -->
+                            <!-- ADMINISTRADOR -->
+                            <!-- ============================================== -->
+                            @if (User.Identity?.IsAuthenticated == true &&
+                                     User.IsInRole("Administrador"))
+                            {
+                                <li class="nav-item">
+
+                                    <a class="nav-link text-dark"
+                                       asp-controller="Dashboard"
+                                       asp-action="Index">
+
+                                        Dashboard
+
+                                    </a>
+
+                                </li>
+
+
+                                <li class="nav-item">
+
+                                    <a class="nav-link text-dark"
+                                       asp-controller="ServiciosVeterinarios"
+                                       asp-action="Index">
+
+                                        Servicios
+
+                                    </a>
+
+                                </li>
+
+
+                                <li class="nav-item">
+
+                                    <a class="nav-link text-dark"
+                                       asp-controller="AdministracionCitas"
+                                       asp-action="Index">
+
+                                        Citas
+
+                                    </a>
+
+                                </li>
+
+
+                                <li class="nav-item">
+
+                                    <a class="nav-link text-dark"
+                                       asp-controller="Reportes"
+                                       asp-action="Index">
+
+                                        Reportes
+
+                                    </a>
+
+                                </li>
+                            }
+
+
+                            <!-- ============================================== -->
+                            <!-- CLIENTE -->
+                            <!-- ============================================== -->
+                            @if (User.Identity?.IsAuthenticated == true &&
+                                     User.IsInRole("Cliente"))
+                            {
+                                <li class="nav-item">
+
+                                    <a class="nav-link text-dark"
+                                       asp-controller="Mascotas"
+                                       asp-action="Index">
+
+                                        Mis mascotas
+
+                                    </a>
+
+                                </li>
+
+
+                                <li class="nav-item">
+
+                                    <a class="nav-link text-dark"
+                                       asp-controller="Citas"
+                                       asp-action="MisCitas">
+
+                                        Mis citas
+
+                                    </a>
+
+                                </li>
+
+
+                                <li class="nav-item">
+
+                                    <a class="nav-link text-dark"
+                                       asp-controller="Citas"
+                                       asp-action="Solicitar">
+
+                                        Solicitar cita
+
+                                    </a>
+
+                                </li>
+                            }
+
+                        </ul>
                     <partial name="_LoginPartial" />
                 </div>
             </div>

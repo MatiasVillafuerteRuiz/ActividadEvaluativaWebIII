@@ -1,0 +1,186 @@
+﻿@model GestionClinicaVeterinaria.Models.ViewModels.ReportesViewModel
+
+@{
+    ViewData["Title"] = "Reportes";
+}
+
+<div class="container py-4">
+
+    <!-- ===================================================== -->
+    <!-- ENCABEZADO -->
+    <!-- ===================================================== -->
+
+    <div class="mb-4">
+
+        <h1 class="fw-bold mb-1">
+            Reportes
+        </h1>
+
+        <p class="text-muted mb-0">
+            Generación de reportes PDF de la clínica veterinaria.
+        </p>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- MENSAJES -->
+    <!-- ===================================================== -->
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show">
+
+            @TempData["Error"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+
+        </div>
+    }
+
+
+    <div class="row g-4">
+
+
+        <!-- ================================================= -->
+        <!-- REPORTE GENERAL -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-4">
+
+            <div class="card border-0 shadow-sm h-100">
+
+                <div class="card-body p-4">
+
+                    <h5 class="fw-bold">
+                        Reporte general de citas
+                    </h5>
+
+                    <p class="text-muted">
+                        Incluye todas las citas registradas,
+                        sus mascotas, clientes, servicios,
+                        fechas y estados.
+                    </p>
+
+
+                    <a asp-action="ReporteGeneral"
+                       class="btn btn-primary">
+
+                        Descargar PDF
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- REPORTE POR CLIENTE -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-4">
+
+            <div class="card border-0 shadow-sm h-100">
+
+                <div class="card-body p-4">
+
+                    <h5 class="fw-bold">
+                        Citas por cliente
+                    </h5>
+
+                    <p class="text-muted">
+                        Genera un reporte de las citas
+                        correspondientes a un cliente.
+                    </p>
+
+
+                    <form asp-action="ReportePorCliente"
+                          method="get">
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Cliente
+                            </label>
+
+                            <select name="clienteId"
+                                    class="form-select"
+                                    required>
+
+                                <option value="">
+                                    Seleccione un cliente
+                                </option>
+
+                                @foreach (var cliente in Model.Clientes)
+                                {
+                                    <option value="@cliente.Id">
+
+                                        @cliente.Nombre
+                                        @cliente.Apellido
+
+                                    </option>
+                                }
+
+                            </select>
+
+                        </div>
+
+
+                        <button type="submit"
+                                class="btn btn-outline-primary">
+
+                            Descargar PDF
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- SERVICIOS MÁS SOLICITADOS -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-4">
+
+            <div class="card border-0 shadow-sm h-100">
+
+                <div class="card-body p-4">
+
+                    <h5 class="fw-bold">
+                        Servicios más solicitados
+                    </h5>
+
+                    <p class="text-muted">
+                        Muestra los servicios veterinarios
+                        ordenados según la cantidad de citas.
+                    </p>
+
+
+                    <a asp-action="ReporteServiciosMasSolicitados"
+                       class="btn btn-outline-primary">
+
+                        Descargar PDF
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

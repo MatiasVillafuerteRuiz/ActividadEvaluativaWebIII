@@ -1,8 +1,252 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- ========================================================= -->
+<!-- HERO -->
+<!-- ========================================================= -->
+
+<section class="home-hero">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <!-- TEXTO -->
+
+            <div class="col-lg-7">
+
+                <div class="hero-badge">
+                    🐾 Cuidado veterinario
+                </div>
+
+                <h1 class="hero-title">
+
+                    Cuidamos a quienes
+                    forman parte de tu
+                    <span>familia.</span>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Gestiona las citas veterinarias de tus mascotas
+                    de forma rápida y sencilla. Registra a tus
+                    compañeros, consulta nuestros servicios y
+                    solicita atención cuando la necesites.
+
+                </p>
+
+
+                <div class="hero-actions">
+
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <a asp-controller="Dashboard"
+                               asp-action="Index"
+                               class="btn btn-vet-primary btn-lg">
+
+                                Ir al Dashboard
+
+                            </a>
+
+                            <a asp-controller="AdministracionCitas"
+                               asp-action="Index"
+                               class="btn btn-vet-outline btn-lg">
+
+                                Ver citas
+
+                            </a>
+                        }
+                        else if (User.IsInRole("Cliente"))
+                        {
+                            <a asp-controller="Citas"
+                               asp-action="Solicitar"
+                               class="btn btn-vet-primary btn-lg">
+
+                                Solicitar una cita
+
+                            </a>
+
+                            <a asp-controller="Mascotas"
+                               asp-action="Index"
+                               class="btn btn-vet-outline btn-lg">
+
+                                Mis mascotas
+
+                            </a>
+                        }
+                    }
+                    else
+                    {
+                        <a asp-area="Identity"
+                           asp-page="/Account/Register"
+                           class="btn btn-vet-primary btn-lg">
+
+                            Crear una cuenta
+
+                        </a>
+
+                        <a asp-area="Identity"
+                           asp-page="/Account/Login"
+                           class="btn btn-vet-outline btn-lg">
+
+                            Iniciar sesión
+
+                        </a>
+                    }
+
+                </div>
+
+            </div>
+
+
+            <!-- PANEL -->
+
+            <div class="col-lg-5">
+
+                <div class="hero-panel">
+
+                    <div class="hero-panel-icon">
+                        🐶
+                    </div>
+
+                    <h3>
+                        Su bienestar es nuestra prioridad
+                    </h3>
+
+                    <p class="mb-0">
+
+                        Mantén organizada la información de tus
+                        mascotas y sus citas veterinarias desde
+                        un solo lugar.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- FUNCIONALIDADES -->
+<!-- ========================================================= -->
+
+<section class="home-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <div class="section-eyebrow">
+                Nuestra plataforma
+            </div>
+
+            <h2 class="section-title mt-2">
+                Todo lo necesario para cuidar a tu mascota
+            </h2>
+
+            <p class="text-muted">
+
+                Una plataforma sencilla para organizar
+                la atención veterinaria.
+
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- MASCOTAS -->
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🐾
+                    </div>
+
+                    <h5>
+                        Tus mascotas
+                    </h5>
+
+                    <p>
+
+                        Registra la información de tus mascotas
+                        y mantenla asociada a tu cuenta.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CITAS -->
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📅
+                    </div>
+
+                    <h5>
+                        Citas veterinarias
+                    </h5>
+
+                    <p>
+
+                        Solicita citas para tus mascotas y consulta
+                        fácilmente su fecha, servicio y estado.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERVICIOS -->
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🩺
+                    </div>
+
+                    <h5>
+                        Servicios
+                    </h5>
+
+                    <p>
+
+                        Accede a los diferentes servicios
+                        veterinarios disponibles en la clínica.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,272 @@
+@page
+@model GestionClinicaVeterinaria.Areas.Identity.Pages.Account.RegisterModel
+
+@{
+    ViewData["Title"] = "Crear cuenta";
+}
+
+<div class="auth-page">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-xl-11">
+
+                <div class="auth-card">
+
+                    <div class="row g-0">
+
+
+                        <!-- ================================= -->
+                        <!-- PANEL IZQUIERDO -->
+                        <!-- ================================= -->
+
+                        <div class="col-lg-5 d-none d-lg-block">
+
+                            <div class="auth-side">
+
+                                <div>
+
+                                    <div style="font-size: 4rem;"
+                                         class="mb-4">
+                                        🐾
+                                    </div>
+
+                                    <h2>
+                                        Comienza a cuidar mejor de tus mascotas.
+                                    </h2>
+
+                                    <p class="mt-3">
+
+                                        Crea tu cuenta para registrar tus
+                                        mascotas y solicitar citas con los
+                                        servicios de nuestra clínica.
+
+                                    </p>
+
+
+                                    <div class="mt-4">
+
+                                        <p class="mb-2">
+                                            ✓ Registra tus mascotas
+                                        </p>
+
+                                        <p class="mb-2">
+                                            ✓ Solicita citas veterinarias
+                                        </p>
+
+                                        <p class="mb-0">
+                                            ✓ Consulta el estado de tus citas
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ================================= -->
+                        <!-- FORMULARIO -->
+                        <!-- ================================= -->
+
+                        <div class="col-lg-7">
+
+                            <div class="auth-form">
+
+                                <div class="auth-logo">
+                                    🐾
+                                </div>
+
+
+                                <h1 class="auth-title">
+                                    Crear cuenta
+                                </h1>
+
+                                <p class="auth-description">
+
+                                    Completa tus datos para registrarte
+                                    como cliente de la clínica.
+
+                                </p>
+
+
+                                <form method="post">
+
+                                    <div asp-validation-summary="ModelOnly"
+                                         class="text-danger"
+                                         role="alert">
+                                    </div>
+
+
+                                    <!-- NOMBRE + APELLIDO -->
+
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+
+                                            <div class="mb-3">
+
+                                                <label asp-for="Input.Nombre"
+                                                       class="form-label">
+                                                    Nombre
+                                                </label>
+
+                                                <input asp-for="Input.Nombre"
+                                                       class="form-control"
+                                                       placeholder="Tu nombre" />
+
+                                                <span asp-validation-for="Input.Nombre"
+                                                      class="text-danger">
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="col-md-6">
+
+                                            <div class="mb-3">
+
+                                                <label asp-for="Input.Apellido"
+                                                       class="form-label">
+                                                    Apellido
+                                                </label>
+
+                                                <input asp-for="Input.Apellido"
+                                                       class="form-control"
+                                                       placeholder="Tu apellido" />
+
+                                                <span asp-validation-for="Input.Apellido"
+                                                      class="text-danger">
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- EMAIL -->
+
+                                    <div class="mb-3">
+
+                                        <label asp-for="Input.Email"
+                                               class="form-label">
+                                            Correo electrónico
+                                        </label>
+
+                                        <input asp-for="Input.Email"
+                                               class="form-control"
+                                               autocomplete="username"
+                                               placeholder="nombre@correo.com" />
+
+                                        <span asp-validation-for="Input.Email"
+                                              class="text-danger">
+                                        </span>
+
+                                    </div>
+
+
+                                    <!-- PASSWORD -->
+
+                                    <div class="mb-3">
+
+                                        <label asp-for="Input.Password"
+                                               class="form-label">
+                                            Contraseña
+                                        </label>
+
+                                        <input asp-for="Input.Password"
+                                               class="form-control"
+                                               autocomplete="new-password"
+                                               placeholder="Crea una contraseña" />
+
+                                        <span asp-validation-for="Input.Password"
+                                              class="text-danger">
+                                        </span>
+
+                                        <small class="text-muted">
+
+                                            Mínimo 6 caracteres, una mayúscula
+                                            y un número.
+
+                                        </small>
+
+                                    </div>
+
+
+                                    <!-- CONFIRMAR -->
+
+                                    <div class="mb-4">
+
+                                        <label asp-for="Input.ConfirmPassword"
+                                               class="form-label">
+                                            Confirmar contraseña
+                                        </label>
+
+                                        <input asp-for="Input.ConfirmPassword"
+                                               class="form-control"
+                                               autocomplete="new-password"
+                                               placeholder="Repite tu contraseña" />
+
+                                        <span asp-validation-for="Input.ConfirmPassword"
+                                              class="text-danger">
+                                        </span>
+
+                                    </div>
+
+
+                                    <!-- REGISTRARSE -->
+
+                                    <button type="submit"
+                                            class="btn btn-vet-primary w-100">
+
+                                        Crear mi cuenta
+
+                                    </button>
+
+
+                                    <div class="text-center mt-4">
+
+                                        <span class="text-muted">
+                                            ¿Ya tienes una cuenta?
+                                        </span>
+
+                                        <a asp-page="./Login"
+                                           asp-route-returnUrl="@Model.ReturnUrl"
+                                           class="fw-semibold">
+
+                                            Iniciar sesión
+
+                                        </a>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

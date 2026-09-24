@@ -1,0 +1,435 @@
+﻿@model GestionClinicaVeterinaria.Models.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container py-4">
+
+    <!-- ===================================================== -->
+    <!-- ENCABEZADO -->
+    <!-- ===================================================== -->
+
+    <div class="mb-4">
+
+        <h1 class="fw-bold mb-1">
+            Dashboard
+        </h1>
+
+        <p class="text-muted mb-0">
+            Resumen general de la clínica veterinaria.
+        </p>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- TARJETAS PRINCIPALES -->
+    <!-- ===================================================== -->
+
+    <div class="row g-4 mb-4">
+
+        <!-- SERVICIOS -->
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="card border-0 shadow-sm h-100">
+
+                <div class="card-body p-4">
+
+                    <p class="text-muted mb-2">
+                        Servicios
+                    </p>
+
+                    <h2 class="fw-bold mb-0">
+                        @Model.TotalServicios
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MASCOTAS -->
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="card border-0 shadow-sm h-100">
+
+                <div class="card-body p-4">
+
+                    <p class="text-muted mb-2">
+                        Mascotas
+                    </p>
+
+                    <h2 class="fw-bold mb-0">
+                        @Model.TotalMascotas
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CLIENTES -->
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="card border-0 shadow-sm h-100">
+
+                <div class="card-body p-4">
+
+                    <p class="text-muted mb-2">
+                        Clientes
+                    </p>
+
+                    <h2 class="fw-bold mb-0">
+                        @Model.TotalClientes
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CITAS -->
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="card border-0 shadow-sm h-100">
+
+                <div class="card-body p-4">
+
+                    <p class="text-muted mb-2">
+                        Citas
+                    </p>
+
+                    <h2 class="fw-bold mb-0">
+                        @Model.TotalCitas
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- ESTADO DE CITAS + ACCESOS RÁPIDOS -->
+    <!-- ===================================================== -->
+
+    <div class="row g-4 mb-4">
+
+
+        <!-- ESTADOS -->
+
+        <div class="col-lg-8">
+
+            <div class="card border-0 shadow-sm h-100">
+
+                <div class="card-body p-4">
+
+                    <h5 class="fw-bold mb-4">
+                        Estado de las citas
+                    </h5>
+
+
+                    <div class="row g-3">
+
+                        <!-- PENDIENTES -->
+
+                        <div class="col-md-4">
+
+                            <div class="border rounded p-3 h-100">
+
+                                <span class="badge bg-warning text-dark mb-2">
+                                    Pendientes
+                                </span>
+
+                                <h3 class="fw-bold mb-0">
+                                    @Model.CitasPendientes
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ATENDIDAS -->
+
+                        <div class="col-md-4">
+
+                            <div class="border rounded p-3 h-100">
+
+                                <span class="badge bg-success mb-2">
+                                    Atendidas
+                                </span>
+
+                                <h3 class="fw-bold mb-0">
+                                    @Model.CitasAtendidas
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CANCELADAS -->
+
+                        <div class="col-md-4">
+
+                            <div class="border rounded p-3 h-100">
+
+                                <span class="badge bg-danger mb-2">
+                                    Canceladas
+                                </span>
+
+                                <h3 class="fw-bold mb-0">
+                                    @Model.CitasCanceladas
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACCESOS RÁPIDOS -->
+
+        <div class="col-lg-4">
+
+            <div class="card border-0 shadow-sm h-100">
+
+                <div class="card-body p-4">
+
+                    <h5 class="fw-bold mb-4">
+                        Accesos rápidos
+                    </h5>
+
+
+                    <div class="d-grid gap-2">
+
+                        <a asp-controller="ServiciosVeterinarios"
+                           asp-action="Index"
+                           class="btn btn-primary">
+
+                            Administrar servicios
+
+                        </a>
+
+
+                        <a asp-controller="AdministracionCitas"
+                           asp-action="Index"
+                           class="btn btn-outline-primary">
+
+                            Administrar citas
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- GRÁFICO DE CITAS POR MES -->
+    <!-- ===================================================== -->
+
+    <div class="row g-4">
+
+        <div class="col-12">
+
+            <div class="card border-0 shadow-sm">
+
+                <div class="card-body p-4">
+
+                    <div class="mb-4">
+
+                        <h5 class="fw-bold mb-1">
+                            Citas por mes
+                        </h5>
+
+                        <p class="text-muted mb-0">
+                            Cantidad de citas registradas mensualmente.
+                        </p>
+
+                    </div>
+
+
+                    @if (Model.CitasPorMes.Any())
+                    {
+                        <div style="position: relative; height: 350px;">
+
+                            <canvas id="graficoCitas"></canvas>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+
+                            <h6>
+                                No existen datos
+                            </h6>
+
+                            <p class="text-muted mb-0">
+                                Todavía no existen citas para mostrar
+                                en el gráfico.
+                            </p>
+
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================================= -->
+<!-- SCRIPTS -->
+<!-- ========================================================= -->
+@section Scripts {
+
+    <!-- Chart.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script>
+
+        // =====================================================
+        // DATOS ENVIADOS DESDE ASP.NET
+        // =====================================================
+
+        const meses = @Html.Raw(
+                    System.Text.Json.JsonSerializer.Serialize(Model.Meses)
+            );
+
+        const citasPorMes = @Html.Raw(
+                    System.Text.Json.JsonSerializer.Serialize(Model.CitasPorMes)
+            );
+
+
+        // =====================================================
+        // BUSCAR EL CANVAS
+        // =====================================================
+
+        const canvas = document.getElementById('graficoCitas');
+
+
+        // Solo intentamos crear el gráfico si existe el canvas.
+        // Si no existen citas, el canvas no se genera.
+
+        if (canvas) {
+
+            const contexto = canvas.getContext('2d');
+
+
+            // =================================================
+            // CREAR GRÁFICO
+            // =================================================
+
+            new Chart(contexto, {
+
+                type: 'bar',
+
+
+                data: {
+
+                    labels: meses,
+
+
+                    datasets: [
+                        {
+                            label: 'Cantidad de citas',
+
+                            data: citasPorMes,
+
+                            backgroundColor:
+                                'rgba(13, 110, 253, 0.65)',
+
+                            borderColor:
+                                'rgba(13, 110, 253, 1)',
+
+                            borderWidth: 1,
+
+                            borderRadius: 6
+                        }
+                    ]
+                },
+
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+
+                    scales: {
+
+                        y: {
+
+                            beginAtZero: true,
+
+                            ticks: {
+
+                                // No mostrar números decimales
+                                // porque no existen 1.5 citas.
+
+                                precision: 0
+
+                            }
+
+                        }
+
+                    },
+
+
+                    plugins: {
+
+                        legend: {
+
+                            display: true
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+}

@@ -1,31 +1,462 @@
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+    --vet-primary: #0f766e;
+    --vet-primary-dark: #115e59;
+    --vet-primary-light: #ccfbf1;
+    --vet-secondary: #2563eb;
+    --vet-dark: #172033;
+    --vet-text: #475569;
+    --vet-muted: #64748b;
+    --vet-bg: #f7fafc;
+    --vet-white: #ffffff;
+    --vet-border: #e2e8f0;
+    --vet-danger: #dc2626;
+    --vet-success: #16a34a;
+    --vet-radius: 16px;
+    --vet-radius-lg: 24px;
+    --vet-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    --vet-shadow-hover: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient( 180deg, #ffffff 0%, var(--vet-bg) 100% );
+    color: var(--vet-dark);
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+    color: var(--vet-primary);
+    text-decoration: none;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    a:hover {
+        color: var(--vet-primary-dark);
+    }
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.vet-navbar {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--vet-border);
+    backdrop-filter: blur(12px);
+}
+
+.vet-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--vet-dark) !important;
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+.vet-brand-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--vet-primary);
+    color: white;
+    border-radius: 12px;
+    font-size: 1.25rem;
+}
+
+.vet-navbar .nav-link {
+    color: var(--vet-text) !important;
+    font-weight: 500;
+    padding: 8px 12px !important;
+    border-radius: 9px;
+    transition: all 0.2s ease;
+}
+
+    .vet-navbar .nav-link:hover {
+        color: var(--vet-primary) !important;
+        background: var(--vet-primary-light);
+    }
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.btn {
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+.btn-vet-primary {
+    background: var(--vet-primary);
+    border: 1px solid var(--vet-primary);
+    color: white;
+}
+
+    .btn-vet-primary:hover {
+        background: var(--vet-primary-dark);
+        border-color: var(--vet-primary-dark);
+        color: white;
+        box-shadow: 0 8px 20px rgba(15, 118, 110, 0.22);
+    }
+
+.btn-vet-outline {
+    background: white;
+    border: 1px solid var(--vet-border);
+    color: var(--vet-dark);
+}
+
+    .btn-vet-outline:hover {
+        border-color: var(--vet-primary);
+        color: var(--vet-primary);
+        background: var(--vet-primary-light);
+    }
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+.home-hero {
+    padding: 90px 0 70px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 13px;
+    background: var(--vet-primary-light);
+    color: var(--vet-primary-dark);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    max-width: 720px;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    font-weight: 800;
+}
+
+    .hero-title span {
+        color: var(--vet-primary);
+    }
+
+.hero-description {
+    max-width: 620px;
+    margin-top: 24px;
+    color: var(--vet-muted);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.hero-panel {
+    position: relative;
+    padding: 35px;
+    border-radius: var(--vet-radius-lg);
+    background: linear-gradient( 145deg, #0f766e, #115e59 );
+    color: white;
+    box-shadow: 0 30px 60px rgba(15, 118, 110, 0.2);
+    overflow: hidden;
+}
+
+    .hero-panel::before {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        top: -80px;
+        right: -60px;
+    }
+
+.hero-panel-icon {
+    font-size: 4rem;
+    margin-bottom: 25px;
+}
+
+.hero-panel h3 {
+    font-weight: 800;
+}
+
+.hero-panel p {
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   CARDS HOME
+========================================================= */
+
+.home-section {
+    padding: 70px 0;
+}
+
+.section-eyebrow {
+    color: var(--vet-primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.feature-card {
+    height: 100%;
+    padding: 28px;
+    background: white;
+    border: 1px solid var(--vet-border);
+    border-radius: var(--vet-radius);
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--vet-shadow-hover);
+    }
+
+.feature-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    background: var(--vet-primary-light);
+    font-size: 1.5rem;
+}
+
+.feature-card h5 {
+    font-weight: 750;
+}
+
+.feature-card p {
+    margin-bottom: 0;
+    color: var(--vet-muted);
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   IDENTITY - LOGIN / REGISTER
+========================================================= */
+
+.auth-page {
+    min-height: calc(100vh - 130px);
+    display: flex;
+    align-items: center;
+    padding: 55px 0;
+}
+
+.auth-card {
+    background: white;
+    border: 1px solid var(--vet-border);
+    border-radius: var(--vet-radius-lg);
+    box-shadow: var(--vet-shadow);
+    overflow: hidden;
+}
+
+.auth-form {
+    padding: 45px;
+}
+
+.auth-logo {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    background: var(--vet-primary);
+    color: white;
+    border-radius: 16px;
+    font-size: 1.6rem;
+}
+
+.auth-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.auth-description {
+    color: var(--vet-muted);
+    margin-bottom: 30px;
+}
+
+.auth-side {
+    height: 100%;
+    min-height: 590px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    background: linear-gradient( 145deg, #0f766e, #134e4a );
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+    .auth-side::after {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+        right: -120px;
+        bottom: -120px;
+    }
+
+    .auth-side h2 {
+        font-weight: 800;
+    }
+
+    .auth-side p {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+    }
+
+
+/* =========================================================
+   FORMULARIOS
+========================================================= */
+
+.form-label {
+    color: var(--vet-dark);
+    font-size: 0.9rem;
+    font-weight: 650;
+}
+
+.form-control,
+.form-select {
+    min-height: 48px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 10px 14px;
+    background-color: white;
+}
+
+textarea.form-control {
+    min-height: auto;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--vet-primary);
+    box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.10);
+}
+
+
+/* =========================================================
+   VALIDACIONES
+========================================================= */
+
+.text-danger {
+    font-size: 0.85rem;
+}
+
+.validation-summary-errors {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background: #fef2f2;
+    color: #991b1b;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.vet-footer {
+    margin-top: 50px;
+    padding: 25px 0;
+    border-top: 1px solid var(--vet-border);
+    color: var(--vet-muted);
+    background: white;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .home-hero {
+        padding-top: 55px;
+    }
+
+    .hero-panel {
+        margin-top: 40px;
+    }
+
+    .auth-side {
+        min-height: auto;
+        padding: 35px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .auth-form {
+        padding: 30px 22px;
+    }
+
+    .hero-title {
+        letter-spacing: -1px;
+    }
 }

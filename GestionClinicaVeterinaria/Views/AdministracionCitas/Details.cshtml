@@ -1,0 +1,382 @@
+﻿@model GestionClinicaVeterinaria.Models.Cita
+
+@{
+    ViewData["Title"] = "Detalles de la Cita";
+}
+
+<div class="container py-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+
+            <!-- ENCABEZADO -->
+
+            <div class="mb-4">
+
+                <h1 class="fw-bold">
+                    Detalles de la cita
+                </h1>
+
+                <p class="text-muted">
+                    Información completa de la cita veterinaria.
+                </p>
+
+            </div>
+
+
+            <!-- INFORMACIÓN DE LA CITA -->
+
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4">
+
+                    <h5 class="fw-bold mb-4">
+                        Información de la cita
+                    </h5>
+
+
+                    <div class="row g-4">
+
+
+                        <!-- FECHA -->
+
+                        <div class="col-md-6">
+
+                            <small class="text-muted">
+                                Fecha y hora
+                            </small>
+
+                            <div class="fw-semibold">
+
+                                @Model.FechaHora.ToString(
+                                    "dd/MM/yyyy HH:mm")
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ESTADO -->
+
+                        <div class="col-md-6">
+
+                            <small class="text-muted">
+                                Estado
+                            </small>
+
+                            <div>
+
+                                @if (Model.Estado == "Pendiente")
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        Pendiente
+                                    </span>
+                                }
+                                else if (Model.Estado == "Atendida")
+                                {
+                                    <span class="badge bg-success">
+                                        Atendida
+                                    </span>
+                                }
+                                else if (Model.Estado == "Cancelada")
+                                {
+                                    <span class="badge bg-danger">
+                                        Cancelada
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">
+                                        @Model.Estado
+                                    </span>
+                                }
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- SERVICIO -->
+
+                        <div class="col-md-6">
+
+                            <small class="text-muted">
+                                Servicio
+                            </small>
+
+                            <div class="fw-semibold">
+
+                                @Model.ServicioVeterinario?.NombreServicio
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PRECIO -->
+
+                        <div class="col-md-6">
+
+                            <small class="text-muted">
+                                Precio del servicio
+                            </small>
+
+                            <div class="fw-semibold">
+
+                                Bs @Model.ServicioVeterinario?.Precio.ToString("N2")
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MASCOTA -->
+
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4">
+
+                    <h5 class="fw-bold mb-4">
+                        Mascota
+                    </h5>
+
+
+                    <div class="row g-4">
+
+                        <div class="col-md-4">
+
+                            <small class="text-muted">
+                                Nombre
+                            </small>
+
+                            <div class="fw-semibold">
+                                @Model.Mascota?.Nombre
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <small class="text-muted">
+                                Especie
+                            </small>
+
+                            <div class="fw-semibold">
+                                @Model.Mascota?.Especie
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <small class="text-muted">
+                                Raza
+                            </small>
+
+                            <div class="fw-semibold">
+                                @Model.Mascota?.Raza
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CLIENTE -->
+
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4">
+
+                    <h5 class="fw-bold mb-4">
+                        Cliente
+                    </h5>
+
+
+                    @if (Model.Mascota?.Usuario != null)
+                    {
+                        <div class="row g-4">
+
+                            <div class="col-md-6">
+
+                                <small class="text-muted">
+                                    Nombre completo
+                                </small>
+
+                                <div class="fw-semibold">
+
+                                    @Model.Mascota.Usuario.Nombre
+                                    @Model.Mascota.Usuario.Apellido
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <small class="text-muted">
+                                    Correo electrónico
+                                </small>
+
+                                <div class="fw-semibold">
+
+                                    @Model.Mascota.Usuario.Email
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted mb-0">
+                            No existe información del cliente.
+                        </p>
+                    }
+
+                </div>
+
+            </div>
+
+
+            <!-- OBSERVACIONES -->
+
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4">
+
+                    <h5 class="fw-bold">
+                        Observaciones
+                    </h5>
+
+                    @if (string.IsNullOrWhiteSpace(Model.Observaciones))
+                    {
+                        <p class="text-muted mb-0">
+                            No existen observaciones.
+                        </p>
+                    }
+                    else
+                    {
+                        <p class="mb-0">
+                            @Model.Observaciones
+                        </p>
+                    }
+
+                </div>
+
+            </div>
+
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4">
+
+                    <h5 class="fw-bold mb-3">
+                        Cambiar estado
+                    </h5>
+
+                    <form asp-action="CambiarEstado"
+                          method="post">
+
+                        <input type="hidden"
+                               name="id"
+                               value="@Model.Id" />
+
+                        <div class="row g-2">
+
+                            <div class="col-md-8">
+
+                                <select name="estado"
+                                        class="form-select">
+
+                                    @if (Model.Estado == "Pendiente")
+                                    {
+                                        <option value="Pendiente" selected>
+                                            Pendiente
+                                        </option>
+                                    }
+                                    else
+                                    {
+                                        <option value="Pendiente">
+                                            Pendiente
+                                        </option>
+                                    }
+
+                                    @if (Model.Estado == "Atendida")
+                                    {
+                                        <option value="Atendida" selected>
+                                            Atendida
+                                        </option>
+                                    }
+                                    else
+                                    {
+                                        <option value="Atendida">
+                                            Atendida
+                                        </option>
+                                    }
+
+                                    @if (Model.Estado == "Cancelada")
+                                    {
+                                        <option value="Cancelada" selected>
+                                            Cancelada
+                                        </option>
+                                    }
+                                    else
+                                    {
+                                        <option value="Cancelada">
+                                            Cancelada
+                                        </option>
+                                    }
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-md-4">
+
+                                <button type="submit"
+                                        class="btn btn-primary w-100">
+
+                                    Actualizar estado
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+            <!-- VOLVER -->
+
+            <a asp-action="Index"
+               class="btn btn-outline-secondary">
+
+                Volver a las citas
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

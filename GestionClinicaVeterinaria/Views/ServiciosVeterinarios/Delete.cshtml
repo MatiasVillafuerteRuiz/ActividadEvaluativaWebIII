@@ -1,0 +1,97 @@
+﻿@model GestionClinicaVeterinaria.Models.ServicioVeterinario
+
+@{
+    ViewData["Title"] = "Eliminar Servicio";
+}
+
+<div class="container py-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="alert alert-danger">
+
+                <h5 class="alert-heading">
+                    ¿Eliminar servicio?
+                </h5>
+
+                Esta acción eliminará el servicio seleccionado.
+
+            </div>
+
+
+            <div class="card border-0 shadow-sm">
+
+                <div class="card-body p-4">
+
+                    <div class="mb-3">
+
+                        <small class="text-muted">
+                            Servicio
+                        </small>
+
+                        <h4 class="fw-bold">
+                            @Model.NombreServicio
+                        </h4>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <small class="text-muted">
+                            Descripción
+                        </small>
+
+                        <p>
+                            @(Model.Descripcion ?? "Sin descripción")
+                        </p>
+
+                    </div>
+
+
+                    <div class="mb-4">
+
+                        <small class="text-muted">
+                            Precio
+                        </small>
+
+                        <h5>
+                            Bs @Model.Precio.ToString("N2")
+                        </h5>
+
+                    </div>
+
+
+                    <form asp-action="Delete"
+                          method="post">
+
+                        <input type="hidden"
+                               asp-for="Id" />
+
+                        <div class="d-flex gap-2">
+
+                            <button type="submit"
+                                    class="btn btn-danger">
+                                Sí, eliminar
+                            </button>
+
+                            <a asp-action="Index"
+                               class="btn btn-outline-secondary">
+                                Cancelar
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
