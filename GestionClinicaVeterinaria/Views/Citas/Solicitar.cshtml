@@ -1,0 +1,46 @@
+﻿@model GestionClinicaVeterinaria.Models.Cita
+
+@{
+    ViewData["Title"] = "Solicitar Cita";
+}
+
+<h2>Solicitar Cita Médica</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Solicitar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label class="control-label">Mascota</label>
+                <select asp-for="MascotaId" class="form-control" asp-items="ViewBag.MascotaId">
+                    <option value="">-- Selecciona una Mascota --</option>
+                </select>
+                <span asp-validation-for="MascotaId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="control-label">Servicio Veterinario</label>
+                <select asp-for="ServicioVeterinarioId" class="form-control" asp-items="ViewBag.ServicioVeterinarioId">
+                    <option value="">-- Selecciona un Servicio --</option>
+                </select>
+                <span asp-validation-for="ServicioVeterinarioId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="FechaHora" class="control-label">Fecha y Hora</label>
+                <input asp-for="FechaHora" class="form-control" type="datetime-local" />
+                <span asp-validation-for="FechaHora" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Observaciones" class="control-label"></label>
+                <textarea asp-for="Observaciones" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Observaciones" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success">Confirmar Solicitud</button>
+            <a asp-action="MisCitas" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>

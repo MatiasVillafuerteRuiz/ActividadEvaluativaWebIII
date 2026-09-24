@@ -1,0 +1,39 @@
+﻿@model IEnumerable<GestionClinicaVeterinaria.Models.Cita>
+
+@{
+    ViewData["Title"] = "Mis Citas";
+}
+
+<h2>Mis Citas Médicas</h2>
+
+<p>
+    <a asp-action="Solicitar" class="btn btn-primary">Solicitar Nueva Cita</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Fecha y Hora</th>
+            <th>Mascota</th>
+            <th>Servicio</th>
+            <th>Estado</th>
+            <th>Observaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FechaHora.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@item.Mascota?.Nombre</td>
+                <td>@item.ServicioVeterinario?.NombreServicio</td>
+                <td>
+                    <span class="badge @(item.Estado == "Pendiente" ? "bg-warning text-dark" : "bg-success")">
+                        @item.Estado
+                    </span>
+                </td>
+                <td>@item.Observaciones</td>
+            </tr>
+        }
+    </tbody>
+</table>
