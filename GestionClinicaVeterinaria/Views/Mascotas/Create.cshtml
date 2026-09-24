@@ -1,0 +1,37 @@
+﻿@model GestionClinicaVeterinaria.Models.Mascota
+
+@{
+    ViewData["Title"] = "Registrar Mascota";
+}
+
+<h2>Registrar Nueva Mascota</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Especie" class="control-label"></label>
+                <input asp-for="Especie" class="form-control" placeholder="Ej. Perro, Gato" />
+                <span asp-validation-for="Especie" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Raza" class="control-label"></label>
+                <input asp-for="Raza" class="form-control" />
+                <span asp-validation-for="Raza" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Edad" class="control-label"></label>
+                <input asp-for="Edad" class="form-control" type="number" />
+                <span asp-validation-for="Edad" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a asp-action="Index" class="btn btn-secondary">Volver</a>
+        </form>
+    </div>
+</div>

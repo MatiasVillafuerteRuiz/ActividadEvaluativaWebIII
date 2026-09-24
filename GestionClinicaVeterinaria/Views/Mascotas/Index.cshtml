@@ -1,0 +1,33 @@
+﻿@model IEnumerable<GestionClinicaVeterinaria.Models.Mascota>
+
+@{
+    ViewData["Title"] = "Mis Mascotas";
+}
+
+<h2>Mis Mascotas</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Registrar Nueva Mascota</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Especie</th>
+            <th>Raza</th>
+            <th>Edad (años)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Especie</td>
+                <td>@item.Raza</td>
+                <td>@item.Edad</td>
+            </tr>
+        }
+    </tbody>
+</table>
